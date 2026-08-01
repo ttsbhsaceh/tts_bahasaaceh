@@ -1,0 +1,11 @@
+PAKET|4|4|13|14
+SOAL|31|4|mendatar|2|10|2|KA
+SOAL|32|5|mendatar|5|3|5|TANCA
+SOAL|33|6|mendatar|5|10|4|GARI
+SOAL|34|7|mendatar|7|7|6|LAMPOH
+SOAL|35|9|mendatar|11|1|8|NANGGROE
+SOAL|36|1|menurun|2|13|5|MARIT
+SOAL|37|2|menurun|8|2|5|GALAK
+SOAL|38|3|menurun|1|5|6|TAMONG
+SOAL|39|6|menurun|5|10|4|GLUE
+SOAL|40|8|menurun|6|4|6|URUENG

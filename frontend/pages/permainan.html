@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bermain TTS — TTS Aceh</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="app-navbar">
+  <div class="navbar-inner">
+    <a href="dashboard.html" class="navbar-brand">
+      <i data-lucide="grid-3x3"></i> TTS Aceh
+    </a>
+    <div class="navbar-actions">
+      <!-- href ini HARUS "paket.html" — dipakai permainan.js untuk intercept -->
+      <a href="paket.html" class="btn btn-outline btn-sm">
+        <i data-lucide="arrow-left"></i> Paket
+      </a>
+      <button id="btn-logout" class="btn btn-outline-danger btn-sm">Keluar</button>
+    </div>
+  </div>
+</nav>
+
+<div class="app-container">
+
+  <div id="guest-banner" class="guest-banner d-none">
+    Kamu masuk sebagai <strong>Tamu</strong> — progres paket ini hanya tersimpan selama sesi berlangsung.
+  </div>
+
+  <div class="permainan-header">
+    <h2>Paket <span id="nomor-paket">—</span></h2>
+    <button id="btn-cek" class="btn btn-primary">
+      <i data-lucide="check-check"></i> Periksa Jawaban
+    </button>
+  </div>
+
+  <div id="skor-info" class="skor-info"></div>
+
+  <div class="tts-wrapper">
+    <div id="tts-grid" class="tts-grid"></div>
+
+    <div class="clue-list">
+      <div class="clue-group">
+        <p class="clue-group-title">Mendatar</p>
+        <div id="clue-mendatar"></div>
+      </div>
+      <div class="clue-group">
+        <p class="clue-group-title">Menurun</p>
+        <div id="clue-menurun"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/transitions.js"></script>
+<script src="../js/permainan.js"></script>
+</body>
+</html>

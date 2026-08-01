@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TTS Aceh — Belajar Bahasa Aceh Lewat Teka-Teki Silang</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="landing-body">
+
+<div class="landing-wrap">
+  <div class="landing-card">
+
+    <!-- Panel kiri: hero emerald -->
+    <div class="landing-hero">
+      <div class="hero-motif" aria-hidden="true"></div>
+      <div class="hero-deco"  aria-hidden="true"></div>
+      <div class="hero-deco-2" aria-hidden="true"></div>
+
+      <div class="hero-emblem">
+        <i data-lucide="grid-3x3"></i>
+      </div>
+
+      <h1 class="brand-title">TTS Aceh</h1>
+      <p class="brand-tagline">Pelajari kosakata Bahasa Aceh sambil bermain Teka-Teki Silang yang seru.</p>
+
+      <ul class="hero-points">
+        <li>
+          <span class="point-icon"><i data-lucide="layers"></i></span>
+          20 paket, masing-masing 10 soal
+        </li>
+        <li>
+          <span class="point-icon"><i data-lucide="languages"></i></span>
+          Clue Aceh + terjemahan Indonesia
+        </li>
+        <li>
+          <span class="point-icon"><i data-lucide="save"></i></span>
+          Progres tersimpan otomatis
+        </li>
+      </ul>
+    </div>
+
+    <!-- Panel kanan: form auth -->
+    <div class="landing-auth">
+      <div class="auth-head">
+        <h2>Selamat datang</h2>
+        <p>Masuk atau buat akun untuk mulai belajar.</p>
+      </div>
+
+      <!-- Tab switcher -->
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="tab-login-btn" data-target="tab-login">Masuk</button>
+        <button class="auth-tab-btn" id="tab-register-btn" data-target="tab-register">Daftar</button>
+      </div>
+
+      <!-- Tab login -->
+      <div class="tab-pane active" id="tab-login">
+        <form id="form-login" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="login-email">Email</label>
+            <input type="email" class="form-control" id="login-email" placeholder="nama@email.com" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label" for="login-password">Password</label>
+            <input type="password" class="form-control" id="login-password" placeholder="••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Masuk</button>
+        </form>
+      </div>
+
+      <!-- Tab register -->
+      <div class="tab-pane" id="tab-register">
+        <form id="form-register" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="register-username">Username</label>
+            <input type="text" class="form-control" id="register-username" minlength="3" maxlength="50" placeholder="min. 3 karakter" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="register-email">Email</label>
+            <input type="email" class="form-control" id="register-email" placeholder="nama@email.com" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label" for="register-password">Password</label>
+            <input type="password" class="form-control" id="register-password" minlength="6" placeholder="min. 6 karakter" required>
+            <p class="form-text">Minimal 6 karakter.</p>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Buat Akun</button>
+        </form>
+      </div>
+
+      <div class="auth-divider"><span>atau</span></div>
+
+      <button id="btn-guest" class="btn btn-tamu">
+        <i data-lucide="user-round"></i> Masuk sebagai Tamu
+      </button>
+      <p class="guest-note">Progres tidak akan tersimpan secara permanen.</p>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="js/api.js"></script>
+<script src="js/transitions.js"></script>
+<script src="js/auth.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

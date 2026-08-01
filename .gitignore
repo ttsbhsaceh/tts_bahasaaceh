@@ -1,0 +1,14 @@
+# Kredensial database asli - JANGAN commit
+backend/config/database.php
+
+# Cache & log
+*.log
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Dependency / build artifacts (jika ada tooling tambahan di masa depan)
+node_modules/

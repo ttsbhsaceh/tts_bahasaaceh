@@ -1,0 +1,712 @@
+/* ============================================================
+   TTS Aceh — Design System
+   Palette : hijau Aceh (emerald) + krem hangat + emas tradisional
+   Type    : Plus Jakarta Sans (display) · DM Sans (body)
+   Motif   : diamond lattice — terinspirasi kain tradisional Aceh
+   ============================================================ */
+
+/* ── Tokens ─────────────────────────────────────────────────── */
+:root {
+  /* Hijau Aceh — warna utama */
+  --hijau:        #1B6B4A;
+  --hijau-dalam:  #145538;
+  --hijau-lembut: #EAF5EE;
+
+  /* Emas tradisional — aksen */
+  --emas:        #A07830;
+  --emas-lembut: #FEF5DF;
+
+  /* Netral hangat */
+  --krem:  #F5F3EF;
+  --putih: #FFFFFF;
+  --tinta: #181F2A;
+  --teks:  #3C4554;
+  --abu:   #8896A7;
+  --garis: #E2DDD5;
+
+  /* Semantik */
+  --benar: #15803D;
+  --salah: #DC2626;
+
+  /* Radius */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+
+  /* Shadow */
+  --sh-sm: 0 1px 3px rgba(24,31,42,.07), 0 1px 2px rgba(24,31,42,.04);
+  --sh-md: 0 4px 16px rgba(24,31,42,.08), 0 1px 4px rgba(24,31,42,.04);
+  --sh-lg: 0 14px 40px rgba(27,107,74,.13), 0 4px 12px rgba(24,31,42,.06);
+
+  /* Tipografi */
+  --font-d: 'Plus Jakarta Sans', sans-serif;
+  --font-b: 'DM Sans', sans-serif;
+
+  /* TTS */
+  --tts-cell-size: 38px;
+
+  /* Easing */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-b);
+  background: var(--krem);
+  color: var(--teks);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* Page fade-in setiap halaman dimuat */
+  animation: page-in 0.38s var(--ease) both;
+}
+
+/* Trigger saat navigasi keluar */
+body.page-out { animation: page-out 0.22s ease-in forwards; }
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes page-out {
+  from { opacity: 1; transform: translateY(0);   }
+  to   { opacity: 0; transform: translateY(-8px);}
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-d);
+  color: var(--tinta);
+  line-height: 1.25;
+}
+
+a { color: var(--hijau); text-decoration: none; }
+a:hover { color: var(--hijau-dalam); }
+
+/* ── Utilitas ────────────────────────────────────────────────── */
+.d-none { display: none !important; }
+.w-100  { width: 100%; }
+.mb-3   { margin-bottom: 16px; }
+.mb-4   { margin-bottom: 24px; }
+
+/* ── Form ────────────────────────────────────────────────────── */
+.form-label {
+  display: block;
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--tinta);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--garis);
+  border-radius: var(--r-md);
+  font-family: var(--font-b);
+  font-size: .95rem;
+  color: var(--tinta);
+  background: var(--putih);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+.form-control:focus {
+  border-color: var(--hijau);
+  box-shadow: 0 0 0 3px rgba(27,107,74,.13);
+}
+.form-control::placeholder { color: var(--abu); }
+
+.form-text {
+  font-size: .78rem;
+  color: var(--abu);
+  margin-top: 5px;
+}
+
+/* ── Tombol ──────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border-radius: var(--r-md);
+  font-family: var(--font-d);
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition:
+    transform .15s var(--ease),
+    box-shadow .15s,
+    background .15s,
+    color .15s,
+    border-color .15s;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(.97); }
+.btn svg { width: 16px; height: 16px; }
+
+.btn-primary {
+  background: var(--hijau);
+  color: #fff;
+  border-color: var(--hijau);
+}
+.btn-primary:hover {
+  background: var(--hijau-dalam);
+  border-color: var(--hijau-dalam);
+  box-shadow: 0 4px 14px rgba(27,107,74,.30);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--tinta);
+  border-color: var(--garis);
+}
+.btn-outline:hover { background: var(--krem); border-color: #ccc; }
+
+.btn-outline-danger {
+  background: transparent;
+  color: #B91C1C;
+  border-color: #FECACA;
+}
+.btn-outline-danger:hover { background: #FEF2F2; }
+
+.btn-tamu {
+  background: transparent;
+  color: var(--teks);
+  border-color: var(--garis);
+  width: 100%;
+}
+.btn-tamu:hover { background: var(--krem); }
+
+.btn-sm  { padding: 7px 14px; font-size: .83rem; }
+.btn-lg  { padding: 13px 28px; font-size: 1rem; }
+.btn-full { width: 100%; }
+
+/* ── Navbar ──────────────────────────────────────────────────── */
+.app-navbar {
+  background: var(--putih);
+  border-bottom: 1px solid var(--garis);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-brand {
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--hijau);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.navbar-brand svg { width: 20px; height: 20px; }
+
+.navbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.username-chip {
+  font-size: .82rem;
+  color: var(--abu);
+  font-weight: 500;
+}
+
+/* ── Kontainer App ───────────────────────────────────────────── */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 28px 80px;
+}
+
+.page-header { margin-bottom: 36px; }
+.page-header h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 4px; }
+.page-header p  { color: var(--abu); font-size: .92rem; }
+
+/* ── Banner tamu ─────────────────────────────────────────────── */
+.guest-banner {
+  background: var(--emas-lembut);
+  border: 1px solid #F0C97C;
+  color: #78520A;
+  padding: 11px 16px;
+  border-radius: var(--r-md);
+  font-size: .875rem;
+  margin-bottom: 24px;
+}
+
+/* ── Landing ─────────────────────────────────────────────────── */
+.landing-body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--krem);
+}
+
+.landing-wrap { width: 100%; max-width: 900px; }
+
+.landing-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  background: var(--putih);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-lg);
+  border: 1px solid var(--garis);
+}
+
+/* Panel kiri — hijau Aceh + motif diamond */
+.landing-hero {
+  background: var(--hijau);
+  color: #fff;
+  padding: 52px 44px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* SIGNATURE: motif diamond lattice à la kain/ornamen Aceh */
+.hero-motif {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient( 45deg,
+      rgba(255,255,255,.07) 0, rgba(255,255,255,.07) 1px,
+      transparent 0, transparent 50%),
+    repeating-linear-gradient(135deg,
+      rgba(255,255,255,.07) 0, rgba(255,255,255,.07) 1px,
+      transparent 0, transparent 50%);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+/* Lingkaran dekoratif di sudut */
+.hero-deco {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  bottom: -80px;
+  right: -80px;
+  pointer-events: none;
+}
+.hero-deco-2 {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+  top: -40px;
+  left: -40px;
+  pointer-events: none;
+}
+
+.hero-emblem {
+  width: 46px;
+  height: 46px;
+  background: rgba(255,255,255,.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  position: relative;
+}
+.hero-emblem svg { width: 24px; height: 24px; }
+
+.brand-title {
+  font-family: var(--font-d);
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.03em;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.brand-tagline {
+  font-size: .93rem;
+  opacity: .85;
+  margin-bottom: 36px;
+  line-height: 1.55;
+  position: relative;
+}
+
+.hero-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.hero-points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .88rem;
+  opacity: .88;
+}
+
+.point-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.point-icon svg { width: 15px; height: 15px; }
+
+/* Panel kanan — form auth */
+.landing-auth {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-head { margin-bottom: 26px; }
+.auth-head h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
+.auth-head p  { font-size: .85rem; color: var(--abu); }
+
+/* Tab switcher */
+.auth-tabs {
+  display: flex;
+  background: var(--krem);
+  border-radius: var(--r-md);
+  padding: 4px;
+  margin-bottom: 26px;
+  gap: 3px;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  padding: 9px;
+  border: none;
+  border-radius: calc(var(--r-md) - 2px);
+  background: transparent;
+  font-family: var(--font-d);
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--abu);
+  cursor: pointer;
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+.auth-tab-btn.active {
+  background: var(--putih);
+  color: var(--tinta);
+  box-shadow: var(--sh-sm);
+}
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* Divider "atau" */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  color: var(--abu);
+  font-size: .78rem;
+}
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--garis);
+}
+
+.guest-note {
+  text-align: center;
+  font-size: .76rem;
+  color: var(--abu);
+  margin-top: 10px;
+}
+
+@media (max-width: 780px) {
+  .landing-card { grid-template-columns: 1fr; }
+  .landing-hero { padding: 36px 28px; }
+  .landing-auth { padding: 32px 28px; }
+}
+
+/* ── Dashboard — Stat cards ──────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 640px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.stat-card {
+  background: var(--putih);
+  border-radius: var(--r-lg);
+  padding: 26px 20px;
+  border: 1px solid var(--garis);
+  box-shadow: var(--sh-sm);
+  text-align: center;
+  transition: box-shadow .2s, transform .2s var(--ease);
+}
+.stat-card:hover {
+  box-shadow: var(--sh-md);
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  font-family: var(--font-d);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--hijau);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: .8rem;
+  color: var(--abu);
+  font-weight: 500;
+}
+
+/* ── Paket grid ──────────────────────────────────────────────── */
+.paket-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 14px;
+}
+
+.paket-item {
+  background: var(--putih);
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--garis);
+  padding: 22px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .18s var(--ease), box-shadow .18s, border-color .18s;
+  box-shadow: var(--sh-sm);
+}
+.paket-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-md);
+  border-color: var(--hijau);
+}
+
+.paket-item.status-selesai {
+  border-color: #86EFAC;
+  background: #F0FDF4;
+}
+.paket-item.status-sedang {
+  border-color: #FCD34D;
+  background: #FFFBEB;
+}
+
+.paket-nomor {
+  font-family: var(--font-d);
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--tinta);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.paket-item.status-selesai .paket-nomor { color: #166534; }
+.paket-item.status-sedang  .paket-nomor { color: #92400E; }
+
+.paket-badge {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.badge-belum   { background: #F1F5F9; color: var(--abu); }
+.badge-sedang  { background: #FEF3C7; color: #92400E; }
+.badge-selesai { background: #DCFCE7; color: #166534; }
+
+/* ── Permainan ───────────────────────────────────────────────── */
+.permainan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.permainan-header h2 { font-size: 1.5rem; font-weight: 700; }
+
+.skor-info {
+  color: var(--abu);
+  font-size: .88rem;
+  margin-bottom: 20px;
+  min-height: 1.4em;
+}
+
+.tts-wrapper {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* Grid TTS */
+.tts-grid {
+  display: grid;
+  gap: 3px;
+  background: var(--garis);
+  padding: calc(3px + 2 * var(--tts-cell-size));
+  border-radius: var(--r-lg);
+  width: fit-content;
+  max-width: 100%;
+  overflow: auto;
+  box-shadow: var(--sh-sm);
+  border: 1px solid var(--garis);
+}
+
+.tts-cell {
+  position: relative;
+  width: var(--tts-cell-size);
+  height: var(--tts-cell-size);
+  background: var(--putih);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0,0,0,.05);
+  border-radius: 3px;
+}
+.tts-cell.empty {
+  background: transparent;
+  border-color: transparent;
+}
+
+.tts-cell input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: .95rem;
+  border-radius: 3px;
+  background: var(--hijau-lembut);
+  color: var(--tinta);
+  transition: background .15s, box-shadow .15s;
+  outline: none;
+  caret-color: var(--hijau);
+}
+.tts-cell input:focus {
+  background: var(--putih);
+  box-shadow: 0 0 0 2px var(--hijau);
+  position: relative;
+  z-index: 1;
+}
+.tts-cell.correct input { background: #DCFCE7; color: #166534; }
+.tts-cell.wrong   input { background: #FEE2E2; color: #991B1B; }
+
+.tts-cell .nomor-label {
+  position: absolute;
+  top: 2px; left: 3px;
+  font-size: .52rem;
+  color: var(--abu);
+  font-weight: 700;
+  line-height: 1;
+  font-family: var(--font-d);
+  pointer-events: none;
+}
+
+/* Daftar clue */
+.clue-list { flex: 1; min-width: 300px; max-width: 500px; }
+.clue-group { margin-bottom: 28px; }
+
+.clue-group-title {
+  font-family: var(--font-d);
+  font-size: .73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--abu);
+  margin-bottom: 10px;
+}
+
+.clue-item {
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  margin-bottom: 6px;
+  background: var(--putih);
+  border: 1px solid var(--garis);
+  font-size: .875rem;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+  line-height: 1.45;
+}
+.clue-item:hover        { background: var(--hijau-lembut); border-color: #B3D9C5; }
+.clue-item.active       { background: var(--hijau-lembut); border-left: 3px solid var(--hijau); border-color: #B3D9C5; }
+
+.clue-lang-toggle {
+  font-size: .72rem;
+  color: var(--hijau);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 6px;
+  font-weight: 500;
+}
+
+/* ── Animasi masuk konten ────────────────────────────────────── */
+.fade-up { animation: fade-up .4s var(--ease) both; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+.stagger-1 { animation-delay: .05s; }
+.stagger-2 { animation-delay: .10s; }
+.stagger-3 { animation-delay: .15s; }
+.stagger-4 { animation-delay: .20s; }
+
+/* ── Responsif ───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .app-container { padding: 24px 16px 60px; }
+  .navbar-inner  { padding: 0 16px; }
+  .tts-wrapper   { flex-direction: column; }
+  .clue-list     { min-width: 0; max-width: 100%; width: 100%; }
+  .brand-title   { font-size: 1.8rem; }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  body, .fade-up { animation: none !important; }
+  .btn, .stat-card, .paket-item, .tts-cell input, .clue-item {
+    transition: none !important;
+  }
+}

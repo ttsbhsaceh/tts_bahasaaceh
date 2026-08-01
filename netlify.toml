@@ -1,0 +1,23 @@
+# ══════════════════════════════════════════════════════════════
+# LANGKAH WAJIB SEBELUM DEPLOY KE NETLIFY:
+# Ganti "GANTI_URL_RAILWAY_KAMU" di bawah dengan URL Railway
+# yang kamu dapatkan setelah deploy backend.
+# Contoh: https://project-tts-aceh-production.up.railway.app
+# ══════════════════════════════════════════════════════════════
+
+[build]
+  publish = "frontend"
+
+# Proxy: request dari frontend ke /backend/api/*
+# akan diteruskan ke Railway secara transparan (tanpa CORS)
+[[redirects]]
+  from   = "/backend/api/*"
+  to     = "https://GANTI_URL_RAILWAY_KAMU/api/:splat"
+  status = 200
+  force  = true
+
+# SPA fallback — pastikan navigasi langsung ke halaman tetap berjalan
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

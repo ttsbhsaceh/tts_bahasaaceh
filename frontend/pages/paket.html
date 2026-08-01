@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilih Paket — TTS Aceh</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="app-navbar">
+  <div class="navbar-inner">
+    <a href="dashboard.html" class="navbar-brand">
+      <i data-lucide="grid-3x3"></i> TTS Aceh
+    </a>
+    <div class="navbar-actions">
+      <a href="dashboard.html" class="btn btn-outline btn-sm">
+        <i data-lucide="layout-dashboard"></i> Dashboard
+      </a>
+      <button id="btn-logout" class="btn btn-outline-danger btn-sm">Keluar</button>
+    </div>
+  </div>
+</nav>
+
+<div class="app-container">
+  <div class="page-header fade-up">
+    <h2>Pilih Paket</h2>
+    <p>20 paket tersedia, masing-masing berisi 10 soal TTS Bahasa Aceh.</p>
+  </div>
+
+  <div id="paket-grid" class="paket-grid"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/transitions.js"></script>
+<script src="../js/paket.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
