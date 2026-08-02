@@ -25,11 +25,7 @@ try {
 } catch (PDOException $e) {
     http_response_code(500);
     header('Content-Type: application/json');
-    $message = 'Koneksi database gagal.';
-    if (getenv('DEBUG_DB') === '1' || getenv('DEBUG_DB') === 'true') {
-        $message = $e->getMessage();
-    }
-    echo json_encode(["success" => false, "message" => $message]);
+    echo json_encode(["success" => false, "message" => $e->getMessage()]);
     exit;
 }
 
