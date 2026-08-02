@@ -20,9 +20,49 @@ try {
             PDO::ATTR_EMULATE_PREPARES   => false,
         ]
     );
+
+    ensureDatabaseSchema($pdo);
 } catch (PDOException $e) {
     http_response_code(500);
     header('Content-Type: application/json');
     echo json_encode(["success" => false, "message" => "Koneksi database gagal."]);
     exit;
+}
+
+function executeSqlFile(PDO $pdo, string $filePath): void
+{
+    if (!is_readable($filePath)) {
+        throw new RuntimeException("File SQL tidak ditemukan: {$filePath}");
+    }
+
+    $sql = file_get_contents($filePath);
+    if ($sql === false) {
+        throw new RuntimeException("Gagal membaca file SQL: {$filePath}");
+    }
+
+    $statements = preg_split('/;\s*(?:\r?\n|$)/', $sql);
+    foreach ($statements as $statement) {
+        $statement = trim($statement);
+        if ($statement === '' || preg_match('/^(--|#)/', $statement)) {
+            continue;
+        }
+        $pdo->exec($statement);
+    }
+}
+
+function ensureDatabaseSchema(PDO $pdo): void
+{
+    try {
+        $pdo->query('SELECT 1 FROM paket LIMIT 1');
+    } catch (PDOException $e) {
+        if ($e->getCode() !== '42S02') {
+            throw $e;
+        }
+
+        $schemaFile = __DIR__ . '/../../database/tts_aceh.sql';
+        $seedFile   = __DIR__ . '/../../database/seed_soal.sql';
+
+        executeSqlFile($pdo, $schemaFile);
+        executeSqlFile($pdo, $seedFile);
+    }
 }
