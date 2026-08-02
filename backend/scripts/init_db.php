@@ -81,33 +81,11 @@ function ensure_database_seeded(string $host, int $port, string $dbName, string 
     $mysqli->query("SET FOREIGN_KEY_CHECKS = 1");
 }
 
-function parse_database_url(string $url): array
-{
-    $parts = parse_url($url);
-    return [
-        'host' => $parts['host'] ?? 'localhost',
-        'port' => $parts['port'] ?? '3306',
-        'user' => $parts['user'] ?? 'root',
-        'pass' => $parts['pass'] ?? '',
-        'name' => isset($parts['path']) ? ltrim($parts['path'], '/') : 'tts_aceh',
-    ];
-}
-
-$databaseUrl = getenv('DATABASE_URL') ?: getenv('MYSQL_URL') ?: getenv('MYSQLDATABASE_URL');
-if ($databaseUrl) {
-    $parsed = parse_database_url($databaseUrl);
-    $host = $parsed['host'];
-    $port = (int) $parsed['port'];
-    $dbName = $parsed['name'];
-    $user = $parsed['user'];
-    $pass = $parsed['pass'];
-} else {
-    $host = getenv('MYSQLHOST') ?: getenv('MYSQL_HOST') ?: getenv('DB_HOST') ?: 'localhost';
-    $port = (int) (getenv('MYSQLPORT') ?: getenv('MYSQL_PORT') ?: getenv('DB_PORT') ?: '3306');
-    $dbName = getenv('MYSQLDATABASE') ?: getenv('MYSQL_DATABASE') ?: getenv('DB_NAME') ?: 'tts_aceh';
-    $user = getenv('MYSQLUSER') ?: getenv('MYSQL_USER') ?: getenv('DB_USER') ?: 'root';
-    $pass = getenv('MYSQLPASSWORD') ?: getenv('MYSQL_PASSWORD') ?: getenv('DB_PASS') ?: '';
-}
+$host = getenv('MYSQLHOST') ?: getenv('DB_HOST') ?: 'localhost';
+$port = (int) (getenv('MYSQLPORT') ?: getenv('DB_PORT') ?: '3306');
+$dbName = getenv('MYSQLDATABASE') ?: getenv('DB_NAME') ?: 'tts_aceh';
+$user = getenv('MYSQLUSER') ?: getenv('DB_USER') ?: 'root';
+$pass = getenv('MYSQLPASSWORD') ?: getenv('DB_PASS') ?: '';
 
 try {
     ensure_database_seeded($host, $port, $dbName, $user, $pass);

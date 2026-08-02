@@ -26,3 +26,9 @@
     setTimeout(function () { window.location.assign(target); }, 220);
   };
 })();
+
+window.addEventListener('pageshow', function (event) {
+  if (document.body.classList.contains('page-out')) {
+    document.body.classList.remove('page-out');
+  }
+});
