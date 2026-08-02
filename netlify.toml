@@ -12,7 +12,7 @@
 # akan diteruskan ke Railway secara transparan (tanpa CORS)
 [[redirects]]
   from   = "/backend/api/*"
-  to     = "https://GANTI_URL_RAILWAY_KAMU/api/:splat"
+  to     = "https://web-production-e2113.up.railway.app/api/:splat"
   status = 200
   force  = true
 
