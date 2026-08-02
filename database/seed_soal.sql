@@ -1,7 +1,7 @@
--- Seed data: 10 paket TTS Bahasa Aceh
+-- Seed data: 20 paket TTS Bahasa Aceh
 -- Sumber: gambar TTS digital (nomor soal & posisi persis sesuai sumber),
 -- grid dibangun otomatis dengan memastikan setiap perpotongan huruf valid
--- dan seluruh 10 soal per paket saling terhubung dalam satu grid.
+-- dan seluruh soal per paket saling terhubung dalam satu grid.
 
 INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (1, 18, 18);
 SET @paket_id = LAST_INSERT_ID();
@@ -132,3 +132,144 @@ INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang,
 INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES (@paket_id, 4, 'menurun', 3, 7, 6, 'benda yang tapakek bak aki wate tajak kula peu nama jih?', 'Benda yang dipakai di kaki saat sekolah.', 'SIPATU');
 INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES (@paket_id, 7, 'menurun', 8, 2, 3, 'lawan kata dalam?', 'Lawan kata "dalam".', 'LUA');
 INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES (@paket_id, 8, 'menurun', 8, 5, 4, 'anggota tuboh yang ijak" peu nama jih?', 'Anggota tubuh untuk berjalan.', 'KAKI');
+
+-- Paket 11-20
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (11, 15, 15);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 1, 7, 'Bagian tanaman yang warna warni ditimoh bak pucok', 'Bagian tanaman yang berwarna-warni dan harum.', 'BUNGONG'),
+(@paket_id, 2, 'mendatar', 3, 1, 5, 'proses meutamah rayek tanaman', 'Proses berkembang atau bertambah besar bagi tanaman.', 'TIMOH'),
+(@paket_id, 3, 'mendatar', 6, 10, 5, 'tatagun masakan ngen tabalot ngen oen biasa tapeulaku bak ungkot bileh', 'Cara memasak makanan dibungkus daun lalu dipanggang/dikukus.', 'PAYEH'),
+(@paket_id, 4, 'mendatar', 8, 10, 6, 'Sifeut sok wate ipeudeuh bak gop', 'Sifat suka pamer kepada orang lain.', 'MEUNG'),
+(@paket_id, 5, 'mendatar', 10, 6, 6, 'buet wate ipajoh mangsa le binatang', 'Tindakan menerkam atau menyergap mangsa.', 'JAKHAP'),
+(@paket_id, 7, 'mendatar', 6, 3, 5, 'But tapuduk bibit lam tanoh', 'Kegiatan memasukkan bibit atau tumbuhan ke dalam tanah.', 'TANOM'),
+(@paket_id, 9, 'mendatar', 6, 7, 6, 'ukuran aneuk miet yang manteng ubeut', 'Ukuran yang tidak besar atau anak kecil.', 'MANYAK'),
+(@paket_id, 6, 'menurun', 1, 1, 6, 'sesuatu yang nyata hana salah', 'Sesuatu yang benar, nyata, atau tidak salah.', 'BUTOI'),
+(@paket_id, 8, 'menurun', 3, 3, 7, 'sipupu yang manteng na', 'Keadaan yang masih ada atau belum berubah.', 'MANTENG'),
+(@paket_id, 10, 'menurun', 5, 11, 6, 'bagian tuboh cicem untuk diphe', 'Bagian tubuh burung yang digunakan untuk terbang.', 'SAYEUP');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (12, 13, 17);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 2, 5, 'Tanaman yang jeut tapeuget keu bantai.', 'Bahan lembut putih yang biasa dipakai untuk mengisi bantal atau kasur.', 'PANJO'),
+(@paket_id, 2, 'mendatar', 3, 1, 5, 'Tapleh kulet dari lua.', 'Proses melepaskan kulit luar atau mengupas sesuatu.', 'PLUEK'),
+(@paket_id, 3, 'mendatar', 6, 4, 7, 'Buah ubeut yang keu''eung.', 'Buah kecil berasa pedas yang sering dijadikan bumbu masakan.', 'CAMPLI'),
+(@paket_id, 4, 'mendatar', 4, 10, 4, 'Meuphom atau itupu sesuatu.', 'Mengerti, paham, atau menguasai suatu informasi.', 'THEE'),
+(@paket_id, 5, 'mendatar', 8, 11, 5, 'Sifeut hana ye keu sipupu.', 'Sifat tidak gentar menghadapi bahaya atau berani.', 'BEUHE'),
+(@paket_id, 6, 'menurun', 10, 7, 6, 'Bagian lam tapak jaroe.', 'Bagian dalam telapak tangan.', 'PALEUT'),
+(@paket_id, 7, 'menurun', 1, 2, 5, 'Buet wate tapeutentei sipupu.', 'Tindakan menentukan atau memilih sesuatu dari beberapa opsi.', 'PILEH'),
+(@paket_id, 8, 'menurun', 3, 5, 8, 'Ungkot sure yang thoe geutagun.', 'Potongan ikan tongkol kering yang dimasak khas Aceh.', 'KEMAMAH'),
+(@paket_id, 9, 'menurun', 6, 8, 7, 'Deuh takalon ngen mata.', 'Dapat dilihat oleh mata atau kelihatan.', 'LEUMAH'),
+(@paket_id, 10, 'menurun', 3, 12, 8, 'Hantu yang na wate meugreb.', 'Makhluk halus atau sejenis hantu dalam mitologi.', 'GEUNTEUT');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (13, 14, 15);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 2, 7, 'Nikmat yang geubri le Tuhan.', 'Karunia, nikmat, atau rezeki yang diberikan oleh Tuhan.', 'RASEUKI'),
+(@paket_id, 2, 'mendatar', 3, 2, 4, 'Usaha wate tasitet sipupue.', 'Usaha untuk menemukan atau mencari sesuatu.', 'MITA'),
+(@paket_id, 3, 'mendatar', 5, 1, 5, 'Ie yang itubiet dr kulit wate suum.', 'Cairan alami yang keluar dari pori-pori kulit saat kepanasan atau beraktivitas.', 'REUOH'),
+(@paket_id, 4, 'mendatar', 7, 5, 7, 'Jumlah yang kalewat dari ta peurelei.', 'Sisa atau jumlah yang melampaui batas cukup.', 'LEUBEH'),
+(@paket_id, 5, 'mendatar', 9, 7, 5, 'Posisi yang na di ateuh saboh tempat.', 'Posisi yang berada di bagian atas suatu tempat.', 'ICONG'),
+(@paket_id, 6, 'mendatar', 11, 8, 5, 'Ukoran leubeh dr lipeh.', 'Ukuran ketebalan suatu benda atau objek.', 'TUBAI'),
+(@paket_id, 7, 'menurun', 1, 2, 7, 'Binatang lam uteung meucorak yang ipajoh siy.', 'Hewan buas pemangsa bertubuh besar bercorak belang yang dijuluki raja hutan.', 'RIMUENG'),
+(@paket_id, 8, 'menurun', 5, 5, 5, 'Sifeut sesuatu yang han jeut takalen dan ubeut.', 'Sifat permukaan atau tekstur yang tidak kasar.', 'HALOH'),
+(@paket_id, 9, 'menurun', 7, 8, 5, 'Ukoran yang nit dan hana le.', 'Ukuran jumlah yang sedikit atau tidak banyak.', 'BACUT'),
+(@paket_id, 10, 'menurun', 11, 10, 3, 'Tajok sesuatu ke ureung laen.', 'Tindakan menyerahkan sesuatu kepada orang lain.', 'BRI');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (14, 15, 15);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 2, 6, 'tuboh wate tingeh meuasoe', 'Tubuh yang terlihat gemuk atau berisi.', 'TUMBON'),
+(@paket_id, 2, 'mendatar', 3, 1, 8, 'sasaran yang butoi', 'Sasaran yang tepat atau kena.', 'KEUNONG'),
+(@paket_id, 3, 'mendatar', 7, 5, 5, 'sifeut sok atau sombong', 'Sifat suka menyombongkan diri.', 'MBONG'),
+(@paket_id, 4, 'mendatar', 9, 5, 8, 'yang jeut peupuleh peunyaket atau ubat', 'Sesuatu yang digunakan untuk mengobati penyakit.', 'PEUNAWA'),
+(@paket_id, 5, 'mendatar', 11, 10, 4, 'ukuran yang paneuk', 'Ukuran yang tidak panjang.', 'TUET'),
+(@paket_id, 6, 'mendatar', 13, 8, 4, 'taminah ke tempat laen dengan cara tagrop', 'Berpindah tempat dengan cara melompat.', 'CHEN'),
+(@paket_id, 7, 'menurun', 1, 2, 6, 'talangkah udalam saboh tempat', 'Masuk ke dalam suatu tempat.', 'TAMENG'),
+(@paket_id, 8, 'menurun', 3, 5, 5, 'sipupu yang golom tapubut', 'Sesuatu yang belum dilakukan.', 'GOLOM'),
+(@paket_id, 9, 'menurun', 7, 6, 5, 'tabuka mata wate beudeh eh', 'Membuka mata ketika bangun tidur.', 'BLEUT'),
+(@paket_id, 10, 'menurun', 9, 10, 5, 'teuntang jeum, uroe, masa', 'Berhubungan dengan jam, hari, atau masa.', 'WATEE');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (15, 13, 15);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 2, 4, 'rasa bungeh atau hana senang', 'Perasaan emosi atau rasa tidak senang.', 'DHET'),
+(@paket_id, 2, 'mendatar', 3, 1, 3, 'itubit ie mata karna sedih', 'Menumpahkan air mata karena sedih.', 'MOE'),
+(@paket_id, 3, 'mendatar', 3, 5, 6, 'rasa wate kuah ka pah', 'Ukuran atau kondisi yang sudah pas dan sesuai.', 'MINYUM'),
+(@paket_id, 4, 'mendatar', 6, 5, 9, 'su rudok dan kilat wate ujeun', 'Suara gemuruh menggelegar di langit saat hujan.', 'GEULANTEU'),
+(@paket_id, 5, 'mendatar', 11, 10, 3, 'koh sipupue ngen igoe', 'Menjepit atau memotong sesuatu dengan gigi.', 'KAP'),
+(@paket_id, 6, 'menurun', 1, 2, 4, 'bagian ulei ateuh alis', 'Bagian kepala di atas alis.', 'DHOE'),
+(@paket_id, 7, 'menurun', 1, 5, 6, 'ukor brat benda wate tatimang', 'Mengukur berat suatu benda dengan timbangan.', 'TIMANG'),
+(@paket_id, 8, 'menurun', 2, 9, 2, 'apui wate tingeh udep', 'Keadaan api yang sedang membara atau berkobar.', 'HU'),
+(@paket_id, 9, 'menurun', 6, 8, 5, 'posisi yang paling ujong', 'Posisi yang berada di bagian belakang.', 'LIKOT'),
+(@paket_id, 10, 'menurun', 6, 11, 6, 'benda yang tapeusapat jeut keu saboh', 'Kumpulan benda yang disusun bertumpuk menjadi satu.', 'TUMPOK');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (16, 17, 14);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 1, 6, 'binatang meuaki dua yang kireuh-kireuh umpeun', 'Hewan berkaki dua yang biasa dipelihara dan menghasilkan telur.', 'MANOK'),
+(@paket_id, 2, 'mendatar', 5, 1, 5, 'rasa wate ka hana ek le makanan dan ka luwih lam pruet', 'Perasaan mual atau... di perut.', 'LEUGE'),
+(@paket_id, 3, 'mendatar', 7, 4, 6, 'kata gantoe yang makna jih rame ureung', 'Kata ganti yang bermakna "seluruh" atau...', 'MANDUM'),
+(@paket_id, 4, 'mendatar', 10, 4, 7, 'tumbuhan yang ditimoh diateuh tanoh warna ijo biasajih umpeun lumo', 'Tumbuhan liar yang biasa tumbuh di tanah lapang atau rumput.', 'NALEUNG'),
+(@paket_id, 5, 'mendatar', 12, 10, 4, 'binatang yang dua boh aki biasa lebih muhai dari manok', 'Unggas air yang mirip dengan angsa tetapi berukuran lebih kecil.', 'ITEK'),
+(@paket_id, 6, 'menurun', 1, 1, 7, 'buahan yang sering dipakek keu lincah yang kulit jih ijo atau kuning wate ka masak', 'Buah tropis berdaging manis dengan kulit berwarna hijau atau kekuningan saat matang (mangga).', 'MAMPLAM'),
+(@paket_id, 7, 'menurun', 5, 4, 8, 'wilayah yang ubeut yang pimpin jih geuchik', 'Pembagian wilayah administratif terkecil di bawah mukim (desa).', 'GAMPONG'),
+(@paket_id, 8, 'menurun', 9, 7, 5, 'buet yang wate tapeulaku meulanggar hukom tuhan', 'Perbuatan melanggar hukum Tuhan atau dosa.', 'DESYA'),
+(@paket_id, 9, 'menurun', 10, 10, 3, 'Rasa roh takhem bak tuboh wate di lik-lik', 'Rasa geli atau kebas pada tubuh.', 'GLI'),
+(@paket_id, 10, 'menurun', 11, 12, 5, 'Buet wate geuseleung makanan', 'Tindakan menyuap makanan.', 'PEUAP');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (17, 17, 18);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 1, 7, 'Mayat makhluk hudep yang ka mate', 'Mayat atau jasad makhluk hidup yang sudah mati (bangkai).', 'BANGKE'),
+(@paket_id, 2, 'mendatar', 4, 1, 7, 'pakaian yang tapakek dimiyup untuk top pha', 'Pakaian yang dipakai untuk menutupi bagian bawah tubuh (celana).', 'SILUWEU'),
+(@paket_id, 3, 'mendatar', 7, 4, 6, 'di mame le ie krueng', 'Terbawa oleh arus air (hanyut).', 'HANYOT'),
+(@paket_id, 4, 'mendatar', 11, 7, 7, 'Ie yang di le trok u laot', 'Aliran air besar yang mengalir menuju laut (sungai).', 'KRUENG'),
+(@paket_id, 5, 'mendatar', 13, 10, 8, 'hantu yang na di aceh', 'Makhluk halus atau makhluk gaib (hantu).', 'BUROENG'),
+(@paket_id, 6, 'menurun', 1, 1, 5, 'logam yang kuat biasa tapakek untuk bangunan', 'Logam kuat yang biasa digunakan untuk bahan bangunan atau alat-alat (besi).', 'BEUSO'),
+(@paket_id, 7, 'menurun', 3, 4, 5, 'tempat tinggai manusia', 'Tempat tinggal manusia (rumah).', 'RUMOH'),
+(@paket_id, 8, 'menurun', 6, 7, 6, 'binatang jeut diphe yang biasa jih dipip darah', 'Serangga kecil pengisap darah yang sering berbunyi berdengung (nyamuk).', 'NYAMOK'),
+(@paket_id, 9, 'menurun', 10, 10, 6, 'binatang sejenis lumo tapi biasa jih lam lubeung', 'Hewan mamalia besar bertanduk yang suka kubangan (kerbau).', 'KEUBEU'),
+(@paket_id, 10, 'menurun', 12, 14, 4, 'perhiasan yang warna kuneng yang meumanyam', 'Logam mulia berwarna kuning yang sangat berharga (emas).', 'MEUH');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (18, 11, 15);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 1, 7, 'alat makanan yang biasa taboh bu atau ungkot', 'Alat makan berbentuk cekung yang biasa digunakan untuk meletakkan nasi dan lauk (piring).', 'PINGAN'),
+(@paket_id, 2, 'mendatar', 3, 1, 5, 'buet wate tacok ie lam mon ngen tima', 'Kegiatan mengambil air dari sumur menggunakan timba (menimba).', 'CRONG'),
+(@paket_id, 3, 'mendatar', 5, 1, 5, 'sifeut binatang yang golom ragoe', 'Sifat hewan atau sesuatu yang tidak jinak (liar).', 'KLEUT'),
+(@paket_id, 4, 'mendatar', 7, 4, 8, 'makanan yang dipajoh le manusia', 'Sesuatu yang biasa dimakan oleh manusia atau hewan (makanan).', 'PEUNAJOH'),
+(@paket_id, 5, 'mendatar', 4, 10, 4, 'buet tapakek pakaian atau barang bak tuboh', 'Tindakan mengenakan pakaian atau barang di tubuh (pakai).', 'NGUI'),
+(@paket_id, 6, 'menurun', 1, 1, 5, 'bagian tumbuhan paleng ujong', 'Bagian tumbuhan yang paling ujung atau muda (pucuk).', 'PUCOK'),
+(@paket_id, 7, 'menurun', 5, 2, 4, 'keadaan badan wate tingoh leumoh', 'Kondisi badan yang tidak bertenaga atau letih (lemah).', 'LAEH'),
+(@paket_id, 8, 'menurun', 5, 5, 5, 'penyaket yang menular sering keuneng bak manok', 'Penyakit ayam menular yang menyebar dengan cepat secara luas (wabah).', 'TAEUN'),
+(@paket_id, 9, 'menurun', 8, 12, 5, 'makanan wate tatagun ka brat that hitam', 'Keadaan makanan atau benda yang kelewatan masak hingga hitam (hangus).', 'ANGOH'),
+(@paket_id, 10, 'menurun', 10, 14, 5, 'tadeng bak saboh tempat wate lam perjalananan', 'Singgah atau berhenti sejenak di suatu tempat dalam perjalanan (mampir).', 'PIYOH');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (19, 13, 14);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 1, 6, 'binatang yang bineng krueng mirip biawak', 'Hewan melata pemakan daging yang mirip biawak (biawak).', 'MURUWA'),
+(@paket_id, 2, 'mendatar', 3, 1, 7, 'goni yang biasa dipaso untuk panen pade', 'Wadah besar yang biasanya terbuat dari goni atau plastik untuk menampung hasil bumi (karung).', 'EUMPANG'),
+(@paket_id, 3, 'mendatar', 5, 1, 5, 'binatang yang cerdik dan sereng seumeungeut', 'Hewan mamalia bertelinga panjang yang suka melompat (kancil).', 'GLUEH'),
+(@paket_id, 4, 'mendatar', 8, 4, 5, 'tempat jep ie yang dari kaca', 'Tempat minum yang biasanya terbuat dari kaca atau porselen (gelas).', 'CAWAN'),
+(@paket_id, 5, 'mendatar', 9, 10, 3, 'bagian tuboh manusia yang diateuh tuot', 'Bagian kaki manusia di atas lutut (paha).', 'PHA'),
+(@paket_id, 6, 'mendatar', 11, 7, 5, 'bei hana mangat sejenis beu ungkot', 'Aroma yang tidak sedap atau bau khas ikan (amis).', 'HANYI'),
+(@paket_id, 7, 'menurun', 1, 1, 5, 'bagian muka yang sering timoh jerawat', 'Bagian wajah sering tumbuh jerawat.', 'MIENG'),
+(@paket_id, 8, 'menurun', 5, 5, 7, 'tempat boh makanan atau punuwo', 'Sajian makanan atau hidangan yang disuguhkan (hidangan).', 'HIDANG'),
+(@paket_id, 9, 'menurun', 7, 7, 5, 'Bagian bumo yang sereng tanyo gideng ngen aki', 'Lapisan permukaan bumi tempat berpijak (tanah).', 'TANOH'),
+(@paket_id, 10, 'menurun', 8, 11, 4, 'kue khas aceh yang mebentuk ungkot atau bungong', 'Jenis kue tradisional khas Aceh yang berbentuk ikan atau bunga (kue bolu).', 'BHOI');
+
+INSERT INTO paket (nomor_paket, grid_baris, grid_kolom) VALUES (20, 14, 21);
+SET @paket_id = LAST_INSERT_ID();
+INSERT INTO soal (paket_id, nomor_soal, arah, baris_mulai, kolom_mulai, panjang, clue_aceh, clue_indonesia, jawaban_aceh) VALUES
+(@paket_id, 1, 'mendatar', 1, 1, 5, 'boeh warna oren yang le aneuk', 'Buah tropis berdaging manis dengan biji-biji kecil di bagian tengahnya (pepaya).', 'PUTEK'),
+(@paket_id, 2, 'mendatar', 4, 1, 5, 'boeh warna kuneng dan meusisek diluwa dan na mahkota', 'Buah tropis berdaging kuning dengan kulit bersisik dan bermahkota (nanas).', 'ANEUH'),
+(@paket_id, 3, 'mendatar', 6, 1, 6, 'buet wate tingeh le that dan bingong tapubut', 'Perasaan bingung, canggung, atau salah tingkah (sibuk).', 'GABUEK'),
+(@paket_id, 4, 'mendatar', 8, 6, 5, 'boeh yang warna kuneng sereng peget keu kuah apam', 'Buah besar berduri tumpul dengan daging buah berwarna kuning yang harum (nangka).', 'PANAH'),
+(@paket_id, 5, 'mendatar', 12, 9, 5, 'taba sipupu tapuduk ateuh baho', 'Beban yang dibawa dengan cara diletakkan di atas pundak atau dipikul (pikul).', 'GULAM'),
+(@paket_id, 6, 'menurun', 8, 13, 7, 'tapeumate sipupu', 'Tindakan atau proses untuk mematikan sesuatu (mematikan).', 'PEULEN'),
+(@paket_id, 7, 'menurun', 1, 1, 7, 'boeh warna kuneng sereng dipajoh le monyet', 'Buah berbentuk lonjong yang tersusun dalam tandan dengan kulit kuning saat matang (pisang).', 'PISANG'),
+(@paket_id, 8, 'menurun', 6, 6, 5, 'alat untuk itubit angen', 'Alat yang digerakkan untuk menghasilkan angin (kipas).', 'KIPAH'),
+(@paket_id, 9, 'menurun', 7, 9, 6, 'bagian tumbuhan untuk ditimoh oen', 'Bagian tumbuhan yang menghubungkan daun atau buah dengan batang utama (tangkai).', 'TANGKE'),
+(@paket_id, 10, 'menurun', 5, 13, 6, 'rhet dari tempat', 'Keadaan jatuh dari tempat yang lebih tinggi (jatuh).', 'SUMPOM');

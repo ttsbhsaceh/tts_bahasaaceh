@@ -57,16 +57,19 @@ function ensureDatabaseSchema(PDO $pdo): void
     $needsSeed  = false;
 
     try {
-        $hasPaket = (bool)$pdo->query("SHOW TABLES LIKE 'paket'")->fetchColumn();
-        $hasSoal  = (bool)$pdo->query("SHOW TABLES LIKE 'soal'")->fetchColumn();
+        $hasUsers        = (bool)$pdo->query("SHOW TABLES LIKE 'users'")->fetchColumn();
+        $hasPaket        = (bool)$pdo->query("SHOW TABLES LIKE 'paket'")->fetchColumn();
+        $hasSoal         = (bool)$pdo->query("SHOW TABLES LIKE 'soal'")->fetchColumn();
+        $hasProgress     = (bool)$pdo->query("SHOW TABLES LIKE 'progress'")->fetchColumn();
+        $hasJawabanUser  = (bool)$pdo->query("SHOW TABLES LIKE 'jawaban_user'")->fetchColumn();
     } catch (PDOException $e) {
-        $hasPaket = false;
-        $hasSoal  = false;
+        $hasUsers = $hasPaket = $hasSoal = $hasProgress = $hasJawabanUser = false;
     }
 
-    if (!$hasPaket || !$hasSoal) {
-        $needsSeed = true;
-    } else {
+    $needsSchema = !$hasUsers || !$hasPaket || !$hasSoal || !$hasProgress || !$hasJawabanUser;
+    $needsSeed   = !$hasPaket || !$hasSoal;
+
+    if (!$needsSeed) {
         try {
             $paketCount = (int)$pdo->query('SELECT COUNT(*) AS c FROM paket')->fetch()['c'];
             $soalCount  = (int)$pdo->query('SELECT COUNT(*) AS c FROM soal')->fetch()['c'];
@@ -76,6 +79,10 @@ function ensureDatabaseSchema(PDO $pdo): void
         } catch (PDOException $e) {
             $needsSeed = true;
         }
+    }
+
+    if ($needsSchema) {
+        executeSqlFile($pdo, $schemaFile);
     }
 
     if ($needsSeed) {
@@ -89,7 +96,6 @@ function ensureDatabaseSchema(PDO $pdo): void
         }
 
         $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
-        executeSqlFile($pdo, $schemaFile);
         executeSqlFile($pdo, $seedFile);
         $pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
     }

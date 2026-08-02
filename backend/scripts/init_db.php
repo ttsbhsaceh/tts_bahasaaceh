@@ -56,7 +56,7 @@ function ensure_database_seeded(string $host, int $port, string $dbName, string 
     $paketCount = (int) $mysqli->query("SELECT COUNT(*) FROM paket")->fetch_row()[0];
     $soalCount  = (int) $mysqli->query("SELECT COUNT(*) FROM soal")->fetch_row()[0];
 
-    if ($paketCount >= 10 && $soalCount >= 80) {
+    if ($paketCount >= 20 && $soalCount >= 200) {
         return;
     }
 
