@@ -73,12 +73,12 @@ function ensure_database_seeded(string $host, int $port, string $dbName, string 
     if ($mysqli->query("SHOW TABLES LIKE 'paket'")->num_rows) {
         $mysqli->query("TRUNCATE TABLE paket");
     }
-    $mysqli->query("SET FOREIGN_KEY_CHECKS = 1");
 
     $schemaFile = __DIR__ . '/../../database/tts_aceh.sql';
     $seedFile   = __DIR__ . '/../../database/seed_soal.sql';
     run_sql_file($mysqli, $schemaFile);
     run_sql_file($mysqli, $seedFile);
+    $mysqli->query("SET FOREIGN_KEY_CHECKS = 1");
 }
 
 $host = getenv('MYSQLHOST') ?: getenv('DB_HOST') ?: 'localhost';
