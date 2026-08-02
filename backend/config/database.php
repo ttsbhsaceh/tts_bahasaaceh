@@ -88,7 +88,9 @@ function ensureDatabaseSchema(PDO $pdo): void
             $pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
         }
 
+        $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
         executeSqlFile($pdo, $schemaFile);
         executeSqlFile($pdo, $seedFile);
+        $pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

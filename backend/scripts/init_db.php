@@ -46,8 +46,10 @@ function ensure_database_seeded(string $host, int $port, string $dbName, string 
     if ($needsInitialSeed) {
         $schemaFile = __DIR__ . '/../../database/tts_aceh.sql';
         $seedFile   = __DIR__ . '/../../database/seed_soal.sql';
+        $mysqli->query("SET FOREIGN_KEY_CHECKS = 0");
         run_sql_file($mysqli, $schemaFile);
         run_sql_file($mysqli, $seedFile);
+        $mysqli->query("SET FOREIGN_KEY_CHECKS = 1");
         return;
     }
 
