@@ -38,13 +38,10 @@ function ensure_database_seeded(string $host, int $port, string $dbName, string 
     }
     $mysqli->set_charset('utf8mb4');
 
-    $tablesResult = $mysqli->query("SHOW TABLES");
-    $tables = [];
-    while ($row = $tablesResult ? $tablesResult->fetch_row() : null) {
-        $tables[] = $row[0];
-    }
+    $hasPaket = (bool) ($mysqli->query("SHOW TABLES LIKE 'paket'") ?: false)->num_rows;
+    $hasSoal  = (bool) ($mysqli->query("SHOW TABLES LIKE 'soal'") ?: false)->num_rows;
 
-    $needsInitialSeed = !in_array('paket', $tables, true) || !in_array('soal', $tables, true);
+    $needsInitialSeed = !$hasPaket || !$hasSoal;
 
     if ($needsInitialSeed) {
         $schemaFile = __DIR__ . '/../../database/tts_aceh.sql';
@@ -62,10 +59,18 @@ function ensure_database_seeded(string $host, int $port, string $dbName, string 
     }
 
     $mysqli->query("SET FOREIGN_KEY_CHECKS = 0");
-    $mysqli->query("TRUNCATE TABLE jawaban_user");
-    $mysqli->query("TRUNCATE TABLE progress");
-    $mysqli->query("TRUNCATE TABLE soal");
-    $mysqli->query("TRUNCATE TABLE paket");
+    if ($mysqli->query("SHOW TABLES LIKE 'jawaban_user'")->num_rows) {
+        $mysqli->query("TRUNCATE TABLE jawaban_user");
+    }
+    if ($mysqli->query("SHOW TABLES LIKE 'progress'")->num_rows) {
+        $mysqli->query("TRUNCATE TABLE progress");
+    }
+    if ($mysqli->query("SHOW TABLES LIKE 'soal'")->num_rows) {
+        $mysqli->query("TRUNCATE TABLE soal");
+    }
+    if ($mysqli->query("SHOW TABLES LIKE 'paket'")->num_rows) {
+        $mysqli->query("TRUNCATE TABLE paket");
+    }
     $mysqli->query("SET FOREIGN_KEY_CHECKS = 1");
 
     $schemaFile = __DIR__ . '/../../database/tts_aceh.sql';

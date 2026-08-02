@@ -52,15 +52,41 @@ function executeSqlFile(PDO $pdo, string $filePath): void
 
 function ensureDatabaseSchema(PDO $pdo): void
 {
-    try {
-        $pdo->query('SELECT 1 FROM paket LIMIT 1');
-    } catch (PDOException $e) {
-        if ($e->getCode() !== '42S02') {
-            throw $e;
-        }
+    $schemaFile = __DIR__ . '/../../database/tts_aceh.sql';
+    $seedFile   = __DIR__ . '/../../database/seed_soal.sql';
+    $needsSeed  = false;
 
-        $schemaFile = __DIR__ . '/../../database/tts_aceh.sql';
-        $seedFile   = __DIR__ . '/../../database/seed_soal.sql';
+    try {
+        $hasPaket = (bool)$pdo->query("SHOW TABLES LIKE 'paket'")->fetchColumn();
+        $hasSoal  = (bool)$pdo->query("SHOW TABLES LIKE 'soal'")->fetchColumn();
+    } catch (PDOException $e) {
+        $hasPaket = false;
+        $hasSoal  = false;
+    }
+
+    if (!$hasPaket || !$hasSoal) {
+        $needsSeed = true;
+    } else {
+        try {
+            $paketCount = (int)$pdo->query('SELECT COUNT(*) AS c FROM paket')->fetch()['c'];
+            $soalCount  = (int)$pdo->query('SELECT COUNT(*) AS c FROM soal')->fetch()['c'];
+            if ($paketCount < 10 || $soalCount < 80) {
+                $needsSeed = true;
+            }
+        } catch (PDOException $e) {
+            $needsSeed = true;
+        }
+    }
+
+    if ($needsSeed) {
+        if ($hasPaket || $hasSoal) {
+            $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
+            $pdo->exec('TRUNCATE TABLE jawaban_user');
+            $pdo->exec('TRUNCATE TABLE progress');
+            $pdo->exec('TRUNCATE TABLE soal');
+            $pdo->exec('TRUNCATE TABLE paket');
+            $pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
+        }
 
         executeSqlFile($pdo, $schemaFile);
         executeSqlFile($pdo, $seedFile);
