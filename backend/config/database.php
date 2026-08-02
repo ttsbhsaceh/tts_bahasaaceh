@@ -3,33 +3,11 @@
 // Railway otomatis menyuntik variabel MYSQLHOST, MYSQLDATABASE, MYSQLUSER, MYSQLPASSWORD, MYSQLPORT
 // ketika kamu menambahkan MySQL plugin. Untuk lokal, bisa pakai database.example.php sebagai acuan.
 
-function parseDatabaseUrl(string $url): array
-{
-    $parts = parse_url($url);
-    return [
-        'host' => $parts['host'] ?? 'localhost',
-        'port' => $parts['port'] ?? '3306',
-        'user' => $parts['user'] ?? 'root',
-        'pass' => $parts['pass'] ?? '',
-        'name' => isset($parts['path']) ? ltrim($parts['path'], '/') : 'tts_aceh',
-    ];
-}
-
-$databaseUrl = getenv('DATABASE_URL') ?: getenv('MYSQL_URL') ?: getenv('MYSQLDATABASE_URL');
-if ($databaseUrl) {
-    $parsed = parseDatabaseUrl($databaseUrl);
-    $DB_HOST = $parsed['host'];
-    $DB_PORT = $parsed['port'];
-    $DB_NAME = $parsed['name'];
-    $DB_USER = $parsed['user'];
-    $DB_PASS = $parsed['pass'];
-} else {
-    $DB_HOST = getenv('MYSQLHOST') ?: getenv('MYSQL_HOST') ?: getenv('DB_HOST') ?: 'localhost';
-    $DB_PORT = getenv('MYSQLPORT') ?: getenv('MYSQL_PORT') ?: getenv('DB_PORT') ?: '3306';
-    $DB_NAME = getenv('MYSQLDATABASE') ?: getenv('MYSQL_DATABASE') ?: getenv('DB_NAME') ?: 'tts_aceh';
-    $DB_USER = getenv('MYSQLUSER') ?: getenv('MYSQL_USER') ?: getenv('DB_USER') ?: 'root';
-    $DB_PASS = getenv('MYSQLPASSWORD') ?: getenv('MYSQL_PASSWORD') ?: getenv('DB_PASS') ?: '';
-}
+$DB_HOST = getenv('MYSQLHOST')     ?: getenv('DB_HOST') ?: 'localhost';
+$DB_PORT = getenv('MYSQLPORT')     ?: getenv('DB_PORT') ?: '3306';
+$DB_NAME = getenv('MYSQLDATABASE') ?: getenv('DB_NAME') ?: 'tts_aceh';
+$DB_USER = getenv('MYSQLUSER')     ?: getenv('DB_USER') ?: 'root';
+$DB_PASS = getenv('MYSQLPASSWORD') ?: getenv('DB_PASS') ?: '';
 
 try {
     $pdo = new PDO(
@@ -47,7 +25,11 @@ try {
 } catch (PDOException $e) {
     http_response_code(500);
     header('Content-Type: application/json');
-    echo json_encode(["success" => false, "message" => "Koneksi database gagal."]);
+    $message = 'Koneksi database gagal.';
+    if (getenv('DEBUG_DB') === '1' || getenv('DEBUG_DB') === 'true') {
+        $message = $e->getMessage();
+    }
+    echo json_encode(["success" => false, "message" => $message]);
     exit;
 }
 
